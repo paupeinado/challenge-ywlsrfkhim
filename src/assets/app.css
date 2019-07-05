@@ -1,0 +1,27 @@
+.card {
+    cursor: pointer;
+    max-width: 320px;
+}
+
+.card .close {
+    top: 5px;
+    right: 5px;
+}
+
+.post-single {
+    height: 100vh;
+    width: 80vw;
+    background: #fff;
+    padding: 16px;
+    position: absolute;
+    left: -80vw;
+    top: 0;
+    overflow-y: auto;
+    transition: all 0.2s ease-out;
+    -webkit-box-shadow: 5px 0 30px -5px #000;
+            box-shadow: 5px 0 30px -5px #000;
+}
+
+.post-single.is-active {
+    left: 0;
+}

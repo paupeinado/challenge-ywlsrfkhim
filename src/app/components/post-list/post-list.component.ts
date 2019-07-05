@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post/post.service';
+
+@Component({
+  selector: 'app-post-list',
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.css']
+})
+
+export class PostListComponent implements OnInit {
+
+  postList: any = [];
+
+  constructor(
+      public postService: PostService
+  ) { }
+
+  ngOnInit() {
+    this.loadPosts();
+  }
+
+  // Load the Post collection
+  loadPosts() {
+    return this.postService.ListPost().subscribe((data: {}) => {
+      this.postList = data;
+    });
+  }
+
+  // Remove the Post
+  removePost(post) {
+    const index = this.postList.map(item => item.id).indexOf(post.id);
+
+    return this.postService.DeletePost(post.id).subscribe(res => {
+      this.postList.splice(index, 1);
+    });
+  }
+}

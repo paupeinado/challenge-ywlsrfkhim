@@ -1,0 +1,14 @@
+<div class="post-single" [ngClass]="{'is-active': post}" *ngIf="post">
+    <div class="clearfix text-right">
+        <button type="button" [routerLink]="['/']"
+                class="btn" aria-label="Close" >
+            <span aria-hidden="true" style="font-size: 50px">&times;</span>
+        </button>
+    </div>
+    <h1>
+        {{post.title}}
+    </h1>
+    <p>{{post.content}}</p>
+    <img [src]="post.imageUrl" [alt]="post.title" class="img-fluid">
+
+</div>

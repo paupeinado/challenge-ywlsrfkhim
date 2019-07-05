@@ -1,0 +1,37 @@
+<div class="row p-4" xmlns="http://www.w3.org/1999/html">
+    <div class="col-sm-8">
+        <input class="form-control form-control-lg" placeholder="Search a place">
+    </div>
+    <div class="col-sm-1 text-center">
+        <strong style="line-height: 48px">or</strong>
+    </div>
+    <div class="col-sm-2">
+        <button [routerLink]="['/add']"class="btn btn-success btn-lg" tabindex="-1" role="button" aria-disabled="true">Add New</button>
+    </div>
+</div>
+
+<hr>
+
+<div class="card-group">
+    <div *ngFor="let post of postList" class="card">
+        <button type="button" (click)="removePost(post)"
+                class="close rounded-circle position-absolute bg-danger pl-1 pr-1" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="card-inner" [routerLink]="['/show/', post.id]">
+            <img class="card-img-top" [src]="post.image_url" [alt]="post.title" height="150">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{post.title}}
+                </h5>
+                <p class="card-text">
+                    {{post.content}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<router-outlet></router-outlet>

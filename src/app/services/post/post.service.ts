@@ -11,7 +11,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class PostService {
 
   // Base url
-  baseurl = 'http://localhost:3000/items';
+  baseurl = 'https://wf-challenge-jrpygindrv.herokuapp.com/api/v1/posts';
 
   constructor(private http: HttpClient) { }
 
