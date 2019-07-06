@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Post} from "../../services/post/post";
 import {PostService} from "../../services/post/post.service";
 
@@ -11,25 +11,21 @@ import {PostService} from "../../services/post/post.service";
 export class PostShowComponent implements OnInit {
 
   post: Post;
+  isActive: boolean;
 
   constructor(
       private actRoute: ActivatedRoute,
       public postService: PostService,
       private router: Router
   ) {
-
-    // Subscribe to Router events and load Post when NavigationEnd
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        this.getPost();
-      }
-    });
+    this.post = new Post({});
   }
 
   getPost() {
     const id = this.actRoute.snapshot.paramMap.get('id');
     this.postService.GetPost(id).subscribe(data => {
       this.post = new Post(data);
+      this.isActive = true;
     });
   }
 

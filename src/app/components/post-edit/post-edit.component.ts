@@ -1,8 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { PostService } from "../../services/post/post.service";
+import {Post} from "../../services/post/post";
 
 @Component({
   selector: 'app-post-edit',
@@ -12,7 +13,7 @@ import { PostService } from "../../services/post/post.service";
 
 export class PostEditComponent implements OnInit {
 
-  updateIssueForm: FormGroup;
+  editPostForm: FormGroup;
 
   constructor(
       private actRoute: ActivatedRoute,
@@ -21,27 +22,37 @@ export class PostEditComponent implements OnInit {
       private ngZone: NgZone,
       private router: Router
   ) {
-    const id = this.actRoute.snapshot.paramMap.get('id');
-    this.postService.GetPost(id).subscribe((data) => {
-      this.updateIssueForm = this.fb.group({
-        title: [data.title],
-        content: [data.content],
-        image_url: [data.imageUrl],
-        lat: [data.lat],
-        long: [data.long]
-      });
+    this.editPostForm = this.fb.group({
+      title: ['', Validators.required],
+      content: ['', Validators.required],
+      lat: ['', Validators.required],
+      long: ['', Validators.required],
+      imageUrl: ['', Validators.required]
     });
   }
 
   updateForm() {
-    this.updateIssueForm = this.fb.group({
+    const id = this.actRoute.snapshot.paramMap.get('id');
+    this.postService.GetPost(id).subscribe((data) => {
+
+      const post = new Post(data);
+
+      this.editPostForm = this.fb.group({
+        title: [post.title],
+        content: [post.content],
+        imageUrl: [post.imageUrl],
+        lat: [post.lat],
+        long: [post.long]
+      });
     });
   }
 
   submitForm() {
     const id = this.actRoute.snapshot.paramMap.get('id');
-    this.postService.UpdatePost(id, this.updateIssueForm.value).subscribe(res => {
-      this.ngZone.run(() => this.router.navigateByUrl('/'));
+    const post = new Post(this.editPostForm.value);
+
+    this.postService.UpdatePost(id, post).subscribe(res => {
+      this.ngZone.run(() => this.router.navigateByUrl('/show/' + id));
     });
   }
 

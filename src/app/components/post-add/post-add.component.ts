@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { PostService } from "../../services/post/post.service";
 import { Post } from "../../services/post/post";
@@ -10,12 +11,16 @@ import { Post } from "../../services/post/post";
 })
 export class PostAddComponent implements OnInit {
 
+  @Output() created = new EventEmitter<Post>();
+
   isActive: boolean;
   newPostForm: FormGroup;
 
   constructor(
       private formBuilder: FormBuilder,
-      public postService: PostService
+      public postService: PostService,
+      private actRoute: ActivatedRoute,
+      private router: Router
   ) { }
 
   buildForm() {
@@ -30,8 +35,9 @@ export class PostAddComponent implements OnInit {
 
   createPost() {
     const post = new Post(this.newPostForm.value);
-    this.postService.CreatePost(post.toJson()).subscribe(val => {
-      // this.ngZone.run(() => this.router.navigateByUrl('/'));
+    this.postService.CreatePost(post.toJson()).subscribe(newPost => {
+      this.created.emit(newPost);
+      this.router.navigateByUrl('/');
     });
   }
 

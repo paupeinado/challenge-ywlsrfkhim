@@ -1,1 +1,43 @@
-<p>post-edit works!</p>
+<div class="post-single" [ngClass]="{'is-active': editPostForm}">
+    <div class="clearfix text-right">
+        <button type="button" [routerLink]="['/']"
+                class="btn" aria-label="Close" >
+            <span aria-hidden="true" style="font-size: 50px">&times;</span>
+        </button>
+    </div>
+    <h1>Create a Place</h1>
+    <form [formGroup]="editPostForm" novalidate>
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control form-control-lg" formControlName="title" name="titles" placeholder="Place name">
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea class="form-control form-control-lg" formControlName="content" name="content" placeholder="Place description"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Image URL</label>
+            <input type="text" class="form-control form-control-lg" formControlName="imageUrl" name="imageUrl" placeholder="Example: https://c2.staticflickr.com/2/1269/4670777817_d657cd9819_b.jpg">
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Latitude</label>
+                    <input type="number" class="form-control form-control-lg" formControlName="lat" name="lat">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Longitude</label>
+                    <input type="number" class="form-control form-control-lg" formControlName="long" name="long">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success" (click)="submitForm()"
+                    [disabled]="editPostForm.invalid">
+                Update
+            </button>
+        </div>
+    </form>
+</div>

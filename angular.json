@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "challenge-ywlsrfkhim": {
+    "wf-challenge": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/challenge-ywlsrfkhim",
+            "outputPath": "dist/wf-challenge",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "challenge-ywlsrfkhim:build"
+            "browserTarget": "wf-challenge:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "challenge-ywlsrfkhim:build:production"
+              "browserTarget": "wf-challenge:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "challenge-ywlsrfkhim:build"
+            "browserTarget": "wf-challenge:build"
           }
         },
         "test": {
@@ -107,15 +107,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "challenge-ywlsrfkhim:serve"
+            "devServerTarget": "wf-challenge:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "challenge-ywlsrfkhim:serve:production"
+              "devServerTarget": "wf-challenge:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "challenge-ywlsrfkhim"
+  "defaultProject": "wf-challenge"
 }

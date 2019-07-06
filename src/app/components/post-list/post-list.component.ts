@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post/post.service';
+import {Post} from "../../services/post/post";
 
 @Component({
   selector: 'app-post-list',
@@ -33,5 +34,15 @@ export class PostListComponent implements OnInit {
     return this.postService.DeletePost(post.id).subscribe(res => {
       this.postList.splice(index, 1);
     });
+  }
+
+  onActivate(componentReference) {
+    componentReference.created.subscribe((newPost) => {
+      this.postList.push(newPost);
+    });
+  }
+
+  trackByFn(post) {
+    return post.id;
   }
 }

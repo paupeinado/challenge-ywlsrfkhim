@@ -1,4 +1,4 @@
-<div class="post-single" [ngClass]="{'is-active': post}" *ngIf="post">
+<div class="post-single" [ngClass]="{'is-active': isActive}">
     <div class="clearfix text-right">
         <button type="button" [routerLink]="['/']"
                 class="btn" aria-label="Close" >
@@ -9,6 +9,15 @@
         {{post.title}}
     </h1>
     <p>{{post.content}}</p>
-    <img [src]="post.imageUrl" [alt]="post.title" class="img-fluid">
+
+    <agm-map [latitude]="post.lat" [longitude]="post.long">
+        <agm-marker [latitude]="post.lat" [longitude]="post.long"></agm-marker>
+    </agm-map>
+
+    <img *ngIf="post.imageUrl" [src]="post.imageUrl" [alt]="post.title" class="img-fluid">
+
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-dark" [routerLink]="['/edit/', post.id]">Modify</button>
+    </div>
 
 </div>

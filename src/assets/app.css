@@ -1,6 +1,7 @@
+/* Place item on List view */
 .card {
     cursor: pointer;
-    max-width: 320px;
+    display: inline-block
 }
 
 .card .close {
@@ -8,13 +9,14 @@
     right: 5px;
 }
 
+/* Place item on Show view */
 .post-single {
     height: 100vh;
-    width: 80vw;
+    width: 90vw;
     background: #fff;
     padding: 16px;
-    position: absolute;
-    left: -80vw;
+    position: fixed;
+    left: -90vw;
     top: 0;
     overflow-y: auto;
     transition: all 0.2s ease-out;
@@ -24,4 +26,9 @@
 
 .post-single.is-active {
     left: 0;
+}
+
+/* Map component */
+agm-map {
+    height: 300px;
 }
