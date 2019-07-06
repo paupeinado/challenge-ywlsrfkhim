@@ -11,10 +11,13 @@ import {Post} from "../../services/post/post";
 export class PostListComponent implements OnInit {
 
   postList: any = [];
+  search: string;
 
   constructor(
       public postService: PostService
-  ) { }
+  ) {
+    // this.search = "erli";
+  }
 
   ngOnInit() {
     this.loadPosts();
@@ -37,9 +40,11 @@ export class PostListComponent implements OnInit {
   }
 
   onActivate(componentReference) {
-    componentReference.created.subscribe((newPost) => {
-      this.postList.push(newPost);
-    });
+    if (componentReference.hasOwnProperty('created')) {
+      componentReference.created.subscribe((newPost) => {
+        this.postList.push(newPost);
+      });
+    }
   }
 
   trackByFn(post) {

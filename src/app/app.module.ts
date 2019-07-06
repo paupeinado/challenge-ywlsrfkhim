@@ -10,6 +10,7 @@ import { PostListComponent } from "./components/post-list/post-list.component";
 import { PostShowComponent} from "./components/post-show/post-show.component";
 import { PostAddComponent } from "./components/post-add/post-add.component";
 import { PostEditComponent } from "./components/post-edit/post-edit.component";
+import { ContainsTextPipe } from "./pipes/contains-text.pipe";
 
 import { PostService } from './services/post/post.service';
 
@@ -19,7 +20,8 @@ import { PostService } from './services/post/post.service';
     PostListComponent,
     PostShowComponent,
     PostAddComponent,
-    PostEditComponent
+    PostEditComponent,
+    ContainsTextPipe
   ],
   imports: [
     BrowserModule,

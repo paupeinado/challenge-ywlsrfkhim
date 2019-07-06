@@ -1,6 +1,6 @@
 <div class="row p-4">
     <div class="col-sm-8">
-        <input class="form-control form-control-lg" placeholder="Search a place">
+        <input class="form-control form-control-lg" placeholder="Search a place" (input)="search = $event.target.value">
     </div>
     <div class="col-sm-1 text-center">
         <strong style="line-height: 48px">or</strong>
@@ -13,7 +13,7 @@
 <hr>
 
 <div class="card-columns">
-    <div *ngFor="let post of postList; trackBy: trackByFn" class="card">
+    <div *ngFor="let post of postList | containsText: search; trackBy: trackByFn" class="card">
         <button type="button" (click)="removePost(post)"
                 class="close rounded-circle position-absolute bg-danger pl-1 pr-1" aria-label="Close" >
             <span aria-hidden="true">&times;</span>
