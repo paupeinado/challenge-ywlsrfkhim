@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { PostService } from "../../services/post/post.service";
 import { Post } from "../../services/post/post";

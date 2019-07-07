@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from "@agm/core";
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,7 @@ import { PostShowComponent} from "./components/post-show/post-show.component";
 import { PostAddComponent } from "./components/post-add/post-add.component";
 import { PostEditComponent } from "./components/post-edit/post-edit.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { ContainsTextPipe } from "./pipes/contains-text.pipe";
+import { ContainsTextPipe } from "./pipes/contains-text/contains-text.pipe";
 
 import { PostService } from './services/post/post.service';
 
@@ -40,9 +40,7 @@ import { PostService } from './services/post/post.service';
     MatButtonModule,
     BrowserAnimationsModule
   ],
-  entryComponents: [
-    ConfirmationDialogComponent
-  ],
+  entryComponents: [ConfirmationDialogComponent],
   providers: [PostService],
   bootstrap: [AppComponent]
 })
