@@ -12,8 +12,8 @@ import { Post } from "../../services/post/post";
 
 export class PostListComponent implements OnInit {
 
-  private postList: Post[] = [];
-  private search: string;
+  postList: Post[] = [];
+  search: string;
 
   constructor(
       public postService: PostService,

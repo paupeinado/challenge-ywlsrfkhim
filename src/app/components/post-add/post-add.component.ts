@@ -13,7 +13,7 @@ export class PostAddComponent implements OnInit {
 
   @Output() created = new EventEmitter<Post>();
 
-  private newPostForm: FormGroup;
+  newPostForm: FormGroup;
 
   constructor(
       private formBuilder: FormBuilder,

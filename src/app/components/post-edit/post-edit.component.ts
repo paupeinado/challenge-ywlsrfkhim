@@ -15,8 +15,8 @@ export class PostEditComponent implements OnInit {
 
   @Output() updated = new EventEmitter<Post>();
 
-  private postId: string;
-  private editPostForm: FormGroup;
+  postId: string;
+  editPostForm: FormGroup;
 
   constructor(
       private actRoute: ActivatedRoute,
