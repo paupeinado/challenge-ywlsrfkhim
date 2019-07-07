@@ -12,7 +12,7 @@ import {Post} from "../../services/post/post";
 
 export class PostListComponent implements OnInit {
 
-  postList: any = [];
+  postList: Post[] = [];
   search: string;
 
   constructor(
@@ -26,7 +26,7 @@ export class PostListComponent implements OnInit {
 
   // Load the Post collection
   loadPosts() {
-    return this.postService.ListPost().subscribe((data: {}) => {
+    return this.postService.ListPost().subscribe((data: Post[]) => {
       this.postList = data;
     });
   }

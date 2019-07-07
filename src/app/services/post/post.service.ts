@@ -23,8 +23,8 @@ export class PostService {
   };
 
   // LIST - Get a list of Post
-  ListPost(): Observable<Post> {
-    return this.http.get<Post>(this.baseurl)
+  ListPost(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.baseurl)
         .pipe(
             retry(1),
             catchError(this.errorHandl)
@@ -42,7 +42,7 @@ export class PostService {
 
   // POST - Create a new Post
   CreatePost(data): Observable<Post> {
-    return this.http.post<Post>(this.baseurl + '/', JSON.stringify(data), this.httpOptions)
+    return this.http.post<Post>(this.baseurl, JSON.stringify(data), this.httpOptions)
         .pipe(
             retry(1),
             catchError(this.errorHandl)
@@ -80,5 +80,4 @@ export class PostService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
-
 }

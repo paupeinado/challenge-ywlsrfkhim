@@ -1,9 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { PostService } from "../../services/post/post.service";
-import {Post} from "../../services/post/post";
+import { Post } from "../../services/post/post";
 
 @Component({
   selector: 'app-post-edit',
