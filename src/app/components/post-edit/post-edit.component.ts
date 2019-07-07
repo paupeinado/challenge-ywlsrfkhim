@@ -13,6 +13,7 @@ import {Post} from "../../services/post/post";
 
 export class PostEditComponent implements OnInit {
 
+  postId: string;
   editPostForm: FormGroup;
 
   constructor(
@@ -33,8 +34,9 @@ export class PostEditComponent implements OnInit {
 
   updateForm() {
     const id = this.actRoute.snapshot.paramMap.get('id');
-    this.postService.GetPost(id).subscribe((data) => {
+    this.postId = id;
 
+    this.postService.GetPost(id).subscribe((data) => {
       const post = new Post(data);
 
       this.editPostForm = this.fb.group({

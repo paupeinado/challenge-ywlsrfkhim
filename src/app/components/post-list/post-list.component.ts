@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post/post.service';
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 import {Post} from "../../services/post/post";
 
 @Component({
@@ -14,10 +16,9 @@ export class PostListComponent implements OnInit {
   search: string;
 
   constructor(
-      public postService: PostService
-  ) {
-    // this.search = "erli";
-  }
+      public postService: PostService,
+      public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.loadPosts();
@@ -31,7 +32,7 @@ export class PostListComponent implements OnInit {
   }
 
   // Remove the Post
-  removePost(post) {
+  removePostDirect(post) {
     const index = this.postList.map(item => item.id).indexOf(post.id);
 
     return this.postService.DeletePost(post.id).subscribe(res => {
@@ -49,5 +50,22 @@ export class PostListComponent implements OnInit {
 
   trackByFn(post) {
     return post.id;
+  }
+
+  // Remove the Post
+  removePost(post: Post): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Are you sure to delete "' + post.title + '"?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const index = this.postList.map(item => item.id).indexOf(post.id);
+
+        return this.postService.DeletePost(post.id).subscribe(res => {
+          this.postList.splice(index, 1);
+        });
+      }
+    });
   }
 }

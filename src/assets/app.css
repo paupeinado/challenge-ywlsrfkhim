@@ -12,16 +12,23 @@
 /* Place item on Show view */
 .post-single {
     height: 100vh;
-    width: 90vw;
+    width: 95vw;
     background: #fff;
     padding: 16px;
     position: fixed;
-    left: -90vw;
+    left: -95vw;
     top: 0;
     overflow-y: auto;
     transition: all 0.2s ease-out;
     -webkit-box-shadow: 5px 0 30px -5px #000;
             box-shadow: 5px 0 30px -5px #000;
+}
+
+@media (min-width: 992px) {
+    .post-single {
+        width: 70vw;
+        left: -70vw;
+    }
 }
 
 .post-single.is-active {
