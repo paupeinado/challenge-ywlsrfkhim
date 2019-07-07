@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import {Component, OnInit, NgZone, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,6 +12,8 @@ import { Post } from "../../services/post/post";
 })
 
 export class PostEditComponent implements OnInit {
+
+  @Output() updated = new EventEmitter<Post>();
 
   postId: string;
   editPostForm: FormGroup;
@@ -53,7 +55,9 @@ export class PostEditComponent implements OnInit {
     const id = this.actRoute.snapshot.paramMap.get('id');
     const post = new Post(this.editPostForm.value);
 
-    this.postService.UpdatePost(id, post).subscribe(res => {
+    this.postService.UpdatePost(id, post).subscribe(data => {
+      const updatedPpost = new Post(data);
+      this.updated.emit(updatedPpost);
       this.ngZone.run(() => this.router.navigateByUrl('/show/' + id));
     });
   }

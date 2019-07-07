@@ -26,10 +26,13 @@ export class PostListComponent implements OnInit {
 
   // Load the Post collection
   loadPosts() {
+    const self = this;
     return this.postService.ListPost().subscribe((data: Post[]) => {
-      this.postList = data;
+      data.forEach((value) => {
+        self.postList.push(new Post(value));
+      });
     });
-  }
+  }º
 
   // Remove the Post
   removePostDirect(post) {
@@ -44,6 +47,11 @@ export class PostListComponent implements OnInit {
     if (componentReference.hasOwnProperty('created')) {
       componentReference.created.subscribe((newPost) => {
         this.postList.push(newPost);
+      });
+    } else if (componentReference.hasOwnProperty('updated')) {
+      componentReference.updated.subscribe((updatedPost) => {
+        const foundIndex = this.postList.findIndex(x => x.id === updatedPost.id);
+        this.postList[foundIndex] = updatedPost;
       });
     }
   }
