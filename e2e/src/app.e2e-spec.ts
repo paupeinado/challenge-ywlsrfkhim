@@ -9,15 +9,8 @@ describe('workspace-project App', () => {
   });
 
   it('should display welcome message', () => {
-    page.navigateTo('');
+    page.navigateTo();
     expect(page.getTitleText()).toEqual('Places');
-  });
-
-  it('should navigate to first Post', () => {
-    page.getFirstPost().click();
-    browser.getCurrentUrl().then((url) => {
-      expect(url).toMatch(/\S+show\/\d+/);
-    });
   });
 
   afterEach(async () => {
