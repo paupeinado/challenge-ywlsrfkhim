@@ -10,8 +10,7 @@ import { PostService } from "../../services/post/post.service";
 })
 export class PostShowComponent implements OnInit {
 
-  post: Post;
-  isActive: boolean;
+  private post: Post;
 
   constructor(
       private actRoute: ActivatedRoute,
@@ -25,7 +24,6 @@ export class PostShowComponent implements OnInit {
     const id = this.actRoute.snapshot.paramMap.get('id');
     this.postService.GetPost(id).subscribe(data => {
       this.post = new Post(data);
-      this.isActive = true;
     });
   }
 

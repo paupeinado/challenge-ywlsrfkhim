@@ -13,8 +13,7 @@ export class PostAddComponent implements OnInit {
 
   @Output() created = new EventEmitter<Post>();
 
-  isActive: boolean;
-  newPostForm: FormGroup;
+  private newPostForm: FormGroup;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -43,6 +42,5 @@ export class PostAddComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.isActive = true;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit, NgZone, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, NgZone, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -15,8 +15,8 @@ export class PostEditComponent implements OnInit {
 
   @Output() updated = new EventEmitter<Post>();
 
-  postId: string;
-  editPostForm: FormGroup;
+  private postId: string;
+  private editPostForm: FormGroup;
 
   constructor(
       private actRoute: ActivatedRoute,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post/post.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
-import {Post} from "../../services/post/post";
+import { Post } from "../../services/post/post";
 
 @Component({
   selector: 'app-post-list',
@@ -12,8 +12,8 @@ import {Post} from "../../services/post/post";
 
 export class PostListComponent implements OnInit {
 
-  postList: Post[] = [];
-  search: string;
+  private postList: Post[] = [];
+  private search: string;
 
   constructor(
       public postService: PostService,
@@ -32,23 +32,16 @@ export class PostListComponent implements OnInit {
         self.postList.push(new Post(value));
       });
     });
-  }º
-
-  // Remove the Post
-  removePostDirect(post) {
-    const index = this.postList.map(item => item.id).indexOf(post.id);
-
-    return this.postService.DeletePost(post.id).subscribe(res => {
-      this.postList.splice(index, 1);
-    });
   }
 
   onActivate(componentReference) {
     if (componentReference.hasOwnProperty('created')) {
+      /* Listen to Post created event */
       componentReference.created.subscribe((newPost) => {
         this.postList.push(newPost);
       });
     } else if (componentReference.hasOwnProperty('updated')) {
+      /* Listen to Post updated event */
       componentReference.updated.subscribe((updatedPost) => {
         const foundIndex = this.postList.findIndex(x => x.id === updatedPost.id);
         this.postList[foundIndex] = updatedPost;
