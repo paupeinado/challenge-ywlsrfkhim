@@ -1,5 +1,4 @@
 import { PostShowPage } from "./post-show.po";
-import { by, element, browser } from "protractor";
 
 describe('Create Post tests', () => {
     let page: PostShowPage;
@@ -10,13 +9,17 @@ describe('Create Post tests', () => {
     });
 
     it('should show the first Post', () => {
-        const title = page.getTitle();
-        expect(title.getText.length).toBeGreaterThan(0);
-
-        const content = page.getContent();
-        expect(content.getText.length).toBeGreaterThan(0);
-
-        const image = page.getImage();
-        expect(image.src.length).toBeGreaterThan(0);
+        /* Check title is not empty */
+        page.getTitle().getText().then((text) => {
+            expect(text.length).toBeGreaterThan(0);
+        });
+        /* Check content is not empty */
+        page.getContent().getText().then((text) => {
+            expect(text.length).toBeGreaterThan(0);
+        });
+        /* Check image has source */
+        page.getImage().getAttribute('src').then((src) => {
+            expect(src.length).toBeGreaterThan(0);
+        });
     });
 });

@@ -5,14 +5,14 @@ export class PostShowPage {
     }
 
     getTitle() {
-        return element(by.css('.card-title'));
+        return element(by.css('app-post-show .card-title'));
     }
 
     getContent() {
-        return element(by.css('.card-text'));
+        return element(by.css('app-post-show .card-text'));
     }
 
     getImage() {
-        return element(by.tagName('img'));
+        return element(by.tagName('app-post-show .card img'));
     }
 }
