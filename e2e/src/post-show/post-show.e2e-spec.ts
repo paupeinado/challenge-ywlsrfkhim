@@ -1,6 +1,6 @@
 import { PostShowPage } from './post-show.po';
 
-describe('Create Post tests', () => {
+describe('Show Post', () => {
     let page: PostShowPage;
 
     beforeEach(() => {

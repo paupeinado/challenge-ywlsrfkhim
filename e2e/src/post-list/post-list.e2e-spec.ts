@@ -1,6 +1,6 @@
 import { PostListPage } from './post-list.po';
 
-describe('List Post tests', () => {
+describe('List Post', () => {
     let page: PostListPage;
     beforeEach(() => {
         page = new PostListPage();

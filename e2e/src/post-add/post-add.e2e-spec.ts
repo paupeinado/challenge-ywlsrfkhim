@@ -1,7 +1,7 @@
 import { PostAddPage } from './post-add.po';
 import { by, element } from 'protractor';
 
-describe('Create Post tests', () => {
+describe('Create Post', () => {
     let page: PostAddPage;
     beforeEach(() => {
         page = new PostAddPage();
