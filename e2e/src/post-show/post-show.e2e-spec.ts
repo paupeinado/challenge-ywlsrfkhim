@@ -1,4 +1,4 @@
-import { PostShowPage } from "./post-show.po";
+import { PostShowPage } from './post-show.po';
 
 describe('Create Post tests', () => {
     let page: PostShowPage;

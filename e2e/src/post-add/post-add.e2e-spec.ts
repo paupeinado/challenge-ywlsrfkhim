@@ -1,5 +1,5 @@
 import { PostAddPage } from './post-add.po';
-import { by, element } from "protractor";
+import { by, element } from 'protractor';
 
 describe('Create Post tests', () => {
     let page: PostAddPage;
