@@ -27,4 +27,12 @@ export class PostAddPage {
     getLong() {
         return element(by.name('long'));
     }
+
+    getSubmitButton() {
+        return this.getForm().element(by.css('.btn-success'));
+    }
+
+    getLastCardTitle() {
+        return element(by.css('.card:last-child .card-title'));
+    }
 }

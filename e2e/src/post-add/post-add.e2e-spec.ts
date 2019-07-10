@@ -1,5 +1,4 @@
 import { PostAddPage } from './post-add.po';
-import { by, element } from 'protractor';
 
 describe('Create Post', () => {
     let page: PostAddPage;
@@ -18,10 +17,10 @@ describe('Create Post', () => {
         const formClasses = page.getForm().getAttribute('class');
         expect(formClasses).toContain('ng-valid');
         /* Save Post */
-        const submitBtn = page.getForm().element(by.css('.btn-success'));
+        const submitBtn = page.getSubmitButton();
         submitBtn.click();
         /* Check Post has been created */
-        const lastCardTitle = element(by.css('.card:last-child .card-title'));
+        const lastCardTitle = page.getLastCardTitle();
         expect(lastCardTitle.getText()).toEqual('Test e2e Title');
     });
 });
